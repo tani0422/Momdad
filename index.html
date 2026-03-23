@@ -36,10 +36,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    button:active {
-      transform: scale(0.95);
-    }
-
     .hidden {
       display: none;
     }
@@ -54,21 +50,11 @@
       cursor: pointer;
     }
 
-    #bagStatus {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
     video {
       width: 100%;
       max-width: 400px;
       margin-top: 20px;
       border-radius: 15px;
-    }
-
-    .pool-decor {
-      font-size: 24px;
-      margin: 10px 0;
     }
   </style>
 </head>
@@ -77,26 +63,17 @@
 
   <h1>💙 25 Years. One Beautiful Journey 💙</h1>
 
-  <div class="pool-decor">
-    🌊 💦 🏊‍♂️ 🫧
-  </div>
-
   <p>Ready for a little surprise? 👀</p>
 
-  <!-- BUTTON 1 -->
   <button onclick="showStory()">Start the Story 💫</button>
   <p id="story" class="hidden"></p>
 
-  <!-- BUTTON 2 -->
   <button onclick="showHint()">Guess What’s Next? 👀</button>
   <p id="hint" class="hidden"></p>
 
-  <!-- BUTTON 3 -->
   <button onclick="showPack()">Pack Your Bag 🎒</button>
 
-  <!-- PACKING SECTION -->
   <div id="packSection" class="hidden">
-
     <p>Tap to pack your pool essentials 💦</p>
 
     <div class="items">
@@ -107,10 +84,8 @@
     </div>
 
     <p id="bagStatus">Bag is empty 👀</p>
-
   </div>
 
-  <!-- VIDEO SECTION -->
   <div id="videoSection" class="hidden">
     <p>💙 Here’s Your Surprise 💙</p>
 
@@ -131,7 +106,7 @@
     function showHint() {
       document.getElementById("hint").classList.remove("hidden");
       document.getElementById("hint").innerHTML =
-        "Pack your bags… bring your smiles… and maybe don’t forget your swimsuits 🏊‍♂️💦";
+        "Pack your bags… bring your smiles… and don’t forget your swimsuits 🏊‍♂️💦";
     }
 
     function showPack() {
