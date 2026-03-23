@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>25th Anniversary 💙</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #b3e5fc;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: #01579b;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    button {
+      width: 90%;
+      max-width: 320px;
+      font-size: 18px;
+      padding: 15px;
+      margin: 12px auto;
+      border: none;
+      border-radius: 25px;
+      display: block;
+      background-color: #0288d1;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .gif {
+      width: 120px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .items {
+      font-size: 45px;
+      margin-top: 20px;
+    }
+
+    .items span {
+      margin: 15px;
+      cursor: pointer;
+    }
+
+    #bagStatus {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 350px;
+      margin-top: 20px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>💙 25 Years. One Beautiful Journey 💙</h1>
+
+  <!-- TOP GIFS -->
+  <img class="gif" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
+  <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+
+  <p>Ready for a little surprise? 👀</p>
+
+  <!-- BUTTON 1 -->
+  <button onclick="showStory()">Start the Story 💫</button>
+  <p id="story" class="hidden"></p>
+
+  <!-- BUTTON 2 -->
+  <button onclick="showHint()">Guess What’s Next? 👀</button>
+  <p id="hint" class="hidden"></p>
+
+  <!-- BUTTON 3 -->
+  <button onclick="showPack()">Pack Your Bag 🎒</button>
+
+  <!-- PACKING SECTION -->
+  <div id="packSection" class="hidden">
+
+    <!-- EXTRA POOL GIF -->
+    <img class="gif" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif">
+
+    <p>Tap to pack your pool essentials 💦</p>
+
+    <div class="items">
+      <span onclick="addItem('swim')">👙</span>
+      <span onclick="addItem('drink')">🍹</span>
+      <span>🕶️</span>
+      <span>🧴</span>
+    </div>
+
+    <p id="bagStatus">Bag is empty 👀</p>
+
+  </div>
+
+  <!-- VIDEO -->
+  <div id="videoSection" class="hidden">
+    <p>💙 Surprise! 💙</p>
+
+    <!-- CELEBRATION GIF -->
+    <img class="gif" src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif">
+
+    <video controls autoplay>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    function showStory() {
+      document.getElementById("story").classList.remove("hidden");
+      document.getElementById("story").innerHTML =
+        "From stolen glances… to building a lifetime together 💙<br>25 years later, the love still feels brand new 🥹";
+    }
+
+    function showHint() {
+      document.getElementById("hint").classList.remove("hidden");
+      document.getElementById("hint").innerHTML =
+        "Pack your bags… bring your smiles… and maybe don’t forget your swimsuits 🏊‍♂️💦";
+    }
+
+    function showPack() {
+      document.getElementById("packSection").classList.remove("hidden");
+    }
+
+    let packed = {
+      swim: false,
+      drink: false
+    };
+
+    function addItem(item) {
+      packed[item] = true;
+
+      if (packed.swim && packed.drink) {
+        document.getElementById("bagStatus").innerHTML =
+          "Bag packed! Let’s gooo 💙🏝";
+
+        document.getElementById("videoSection").classList.remove("hidden");
+      } else {
+        document.getElementById("bagStatus").innerHTML =
+          "Keep packing... 💦";
+      }
+    }
+  </script>
+
+</body>
+</html>
