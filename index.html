@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>25th Anniversary 💙</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -79,7 +78,7 @@
 
   <h1>💙 25 Years. One Beautiful Journey 💙</h1>
 
-  <!-- TOP GIFS -->
+  <!-- CUTE POOL GIFS -->
   <img class="gif" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
   <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
 
@@ -99,7 +98,6 @@
   <!-- PACKING SECTION -->
   <div id="packSection" class="hidden">
 
-    <!-- EXTRA POOL GIF -->
     <img class="gif" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif">
 
     <p>Tap to pack your pool essentials 💦</p>
@@ -115,14 +113,13 @@
 
   </div>
 
-  <!-- VIDEO -->
+  <!-- VIDEO SECTION -->
   <div id="videoSection" class="hidden">
-    <p>💙 Surprise! 💙</p>
+    <p>💙 Here’s Your Surprise 💙</p>
 
-    <!-- CELEBRATION GIF -->
-    <img class="gif" src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif">
+    <img class="gif" src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif">
 
-    <video controls autoplay>
+    <video id="myVideo" controls playsinline>
       <source src="video.mp4" type="video/mp4">
     </video>
   </div>
@@ -156,7 +153,11 @@
         document.getElementById("bagStatus").innerHTML =
           "Bag packed! Let’s gooo 💙🏝";
 
-        document.getElementById("videoSection").classList.remove("hidden");
+        let videoSection = document.getElementById("videoSection");
+        videoSection.classList.remove("hidden");
+
+        let video = document.getElementById("myVideo");
+        video.play();
       } else {
         document.getElementById("bagStatus").innerHTML =
           "Keep packing... 💦";
