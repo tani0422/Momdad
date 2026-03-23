@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 20px;
-      background-color: #b3e5fc;
+      background: linear-gradient(to bottom, #b3e5fc, #e1f5fe);
       font-family: Arial, sans-serif;
       text-align: center;
       color: #01579b;
@@ -44,12 +44,6 @@
       display: none;
     }
 
-    .gif {
-      width: 120px;
-      margin: 10px;
-      border-radius: 10px;
-    }
-
     .items {
       font-size: 45px;
       margin-top: 20px;
@@ -67,9 +61,14 @@
 
     video {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       margin-top: 20px;
       border-radius: 15px;
+    }
+
+    .pool-decor {
+      font-size: 24px;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -78,9 +77,9 @@
 
   <h1>💙 25 Years. One Beautiful Journey 💙</h1>
 
-  <!-- CUTE POOL GIFS -->
-  <img class="gif" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
-  <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+  <div class="pool-decor">
+    🌊 💦 🏊‍♂️ 🫧
+  </div>
 
   <p>Ready for a little surprise? 👀</p>
 
@@ -97,8 +96,6 @@
 
   <!-- PACKING SECTION -->
   <div id="packSection" class="hidden">
-
-    <img class="gif" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif">
 
     <p>Tap to pack your pool essentials 💦</p>
 
@@ -117,7 +114,7 @@
   <div id="videoSection" class="hidden">
     <p>💙 Here’s Your Surprise 💙</p>
 
-    <img class="gif" src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif">
+    <button onclick="playVideo()">Play Video 🎥</button>
 
     <video id="myVideo" controls playsinline>
       <source src="video.mp4" type="video/mp4">
@@ -153,15 +150,15 @@
         document.getElementById("bagStatus").innerHTML =
           "Bag packed! Let’s gooo 💙🏝";
 
-        let videoSection = document.getElementById("videoSection");
-        videoSection.classList.remove("hidden");
-
-        let video = document.getElementById("myVideo");
-        video.play();
+        document.getElementById("videoSection").classList.remove("hidden");
       } else {
         document.getElementById("bagStatus").innerHTML =
           "Keep packing... 💦";
       }
+    }
+
+    function playVideo() {
+      document.getElementById("myVideo").play();
     }
   </script>
 
