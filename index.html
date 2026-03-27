@@ -53,6 +53,12 @@
     .items span {
       margin: 15px;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .items span.selected {
+      opacity: 0.5;
+      transform: scale(0.9);
     }
 
     video {
@@ -81,21 +87,22 @@
   <!-- BUTTON 3 -->
   <button onclick="showPack()">Pack Your Bag 🎒</button>
 
-  <!-- PACKING -->
+  <!-- PACKING SECTION -->
   <div id="packSection" class="hidden">
-    <p>Tap to pack your pool essentials 💦</p>
+    <p>Tap below emojis to pack your bag 💦</p>
 
     <div class="items">
-      <span onclick="addItem('swim')">👙</span>
-      <span onclick="addItem('drink')">🍹</span>
-      <span>🕶️</span>
-      <span>🧴</span>
+      <span onclick="addItem(this)">👙</span>
+      <span onclick="addItem(this)">🍹</span>
+      <span onclick="addItem(this)">🕶️</span>
+      <span onclick="addItem(this)">🧴</span>
+      <span onclick="addItem(this)">🩴</span>
     </div>
 
     <p id="bagStatus">Bag is empty 👀</p>
   </div>
 
-  <!-- VIDEO -->
+  <!-- VIDEO SECTION -->
   <div id="videoSection" class="hidden">
     <p>💙 Here’s Your Surprise 💙</p>
 
@@ -103,11 +110,12 @@
 
     <video id="myVideo" controls playsinline>
       <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
 
-    <!-- MAP BUTTON (HIDDEN INITIALLY) -->
+    <!-- MAP BUTTON (appears after video ends) -->
     <button id="mapBtn" class="hidden" onclick="openMap()">
-      Your Destination 📍
+      Tap below to get directions 📍
     </button>
   </div>
 
@@ -128,15 +136,15 @@
       document.getElementById("packSection").classList.remove("hidden");
     }
 
-    let packed = {
-      swim: false,
-      drink: false
-    };
+    let count = 0;
 
-    function addItem(item) {
-      packed[item] = true;
+    function addItem(el) {
+      if (!el.classList.contains("selected")) {
+        el.classList.add("selected");
+        count++;
+      }
 
-      if (packed.swim && packed.drink) {
+      if (count >= 2) {
         document.getElementById("bagStatus").innerHTML =
           "Bag packed! Let’s gooo 💙🏝";
 
@@ -155,7 +163,7 @@
       window.open("https://maps.app.goo.gl/2j4PzAgsWQzouuLU8", "_blank");
     }
 
-    // SHOW BUTTON AFTER VIDEO ENDS
+    // SHOW MAP BUTTON AFTER VIDEO ENDS
     document.getElementById("myVideo").addEventListener("ended", function() {
       document.getElementById("mapBtn").classList.remove("hidden");
     });
