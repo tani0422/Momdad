@@ -7,11 +7,17 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
       background: linear-gradient(to bottom, #b3e5fc, #e1f5fe);
       font-family: Arial, sans-serif;
-      text-align: center;
       color: #01579b;
+    }
+
+    /* CENTER CONTAINER */
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
     }
 
     h1 {
@@ -23,22 +29,24 @@
     }
 
     button {
-      width: 90%;
-      max-width: 320px;
+      width: 100%;
       font-size: 18px;
       padding: 15px;
-      margin: 12px auto;
+      margin: 12px 0;
       border: none;
       border-radius: 25px;
-      display: block;
       background-color: #0288d1;
       color: white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: pointer;
     }
 
+    button:hover {
+      opacity: 0.9;
+    }
+
     button:active {
-      transform: scale(0.95);
+      transform: scale(0.97);
     }
 
     .hidden {
@@ -51,7 +59,7 @@
     }
 
     .items span {
-      margin: 15px;
+      margin: 12px;
       cursor: pointer;
       transition: 0.2s;
     }
@@ -63,60 +71,72 @@
 
     video {
       width: 100%;
-      max-width: 400px;
       margin-top: 20px;
       border-radius: 15px;
+    }
+
+    /* DESKTOP IMPROVEMENT */
+    @media (min-width: 768px) {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>💙 25 Years. One Beautiful Journey 💙</h1>
+  <div class="container">
 
-  <p>Ready for a little surprise? 👀</p>
+    <h1>💙 25 Years. One Beautiful Journey 💙</h1>
 
-  <!-- BUTTON 1 -->
-  <button onclick="showStory()">Start the Story 💫</button>
-  <p id="story" class="hidden"></p>
+    <p>Ready for a little surprise? 👀</p>
 
-  <!-- BUTTON 2 -->
-  <button onclick="showHint()">Guess What’s Next? 👀</button>
-  <p id="hint" class="hidden"></p>
+    <button onclick="showStory()">Start the Story 💫</button>
+    <p id="story" class="hidden"></p>
 
-  <!-- BUTTON 3 -->
-  <button onclick="showPack()">Pack Your Bag 🎒</button>
+    <button onclick="showHint()">Guess What’s Next? 👀</button>
+    <p id="hint" class="hidden"></p>
 
-  <!-- PACKING SECTION -->
-  <div id="packSection" class="hidden">
-    <p>Tap below emojis to pack your bag 💦</p>
+    <button onclick="showPack()">Pack Your Bag 🎒</button>
 
-    <div class="items">
-      <span onclick="addItem(this)">👙</span>
-      <span onclick="addItem(this)">🍹</span>
-      <span onclick="addItem(this)">🕶️</span>
-      <span onclick="addItem(this)">🧴</span>
-      <span onclick="addItem(this)">🩴</span>
+    <div id="packSection" class="hidden">
+      <p>Tap below emojis to pack your bag 💦</p>
+
+      <div class="items">
+        <span onclick="addItem(this)">👙</span>
+        <span onclick="addItem(this)">🍹</span>
+        <span onclick="addItem(this)">🕶️</span>
+        <span onclick="addItem(this)">🧴</span>
+        <span onclick="addItem(this)">🩴</span>
+      </div>
+
+      <p id="bagStatus">Bag is empty 👀</p>
     </div>
 
-    <p id="bagStatus">Bag is empty 👀</p>
-  </div>
+    <div id="videoSection" class="hidden">
+      <p>💙 Here’s Your Surprise 💙</p>
 
-  <!-- VIDEO SECTION -->
-  <div id="videoSection" class="hidden">
-    <p>💙 Here’s Your Surprise 💙</p>
+      <button onclick="playVideo()">Play Video 🎥</button>
 
-    <button onclick="playVideo()">Play Video 🎥</button>
+      <video id="myVideo" controls playsinline>
+        <source src="video.mp4" type="video/mp4">
+      </video>
 
-    <video id="myVideo" controls playsinline>
-      <source src="video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <button id="mapBtn" class="hidden" onclick="openMap()">
+        Tap below to get directions 📍
+      </button>
+    </div>
 
-    <!-- MAP BUTTON (appears after video ends) -->
-    <button id="mapBtn" class="hidden" onclick="openMap()">
-      Tap below to get directions 📍
-    </button>
   </div>
 
   <script>
@@ -147,7 +167,6 @@
       if (count >= 2) {
         document.getElementById("bagStatus").innerHTML =
           "Bag packed! Let’s gooo 💙🏝";
-
         document.getElementById("videoSection").classList.remove("hidden");
       } else {
         document.getElementById("bagStatus").innerHTML =
@@ -163,7 +182,6 @@
       window.open("https://maps.app.goo.gl/2j4PzAgsWQzouuLU8", "_blank");
     }
 
-    // SHOW MAP BUTTON AFTER VIDEO ENDS
     document.getElementById("myVideo").addEventListener("ended", function() {
       document.getElementById("mapBtn").classList.remove("hidden");
     });
