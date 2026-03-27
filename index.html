@@ -34,6 +34,11 @@
       background-color: #0288d1;
       color: white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.95);
     }
 
     .hidden {
@@ -65,14 +70,18 @@
 
   <p>Ready for a little surprise? 👀</p>
 
+  <!-- BUTTON 1 -->
   <button onclick="showStory()">Start the Story 💫</button>
   <p id="story" class="hidden"></p>
 
+  <!-- BUTTON 2 -->
   <button onclick="showHint()">Guess What’s Next? 👀</button>
   <p id="hint" class="hidden"></p>
 
+  <!-- BUTTON 3 -->
   <button onclick="showPack()">Pack Your Bag 🎒</button>
 
+  <!-- PACKING -->
   <div id="packSection" class="hidden">
     <p>Tap to pack your pool essentials 💦</p>
 
@@ -86,6 +95,7 @@
     <p id="bagStatus">Bag is empty 👀</p>
   </div>
 
+  <!-- VIDEO -->
   <div id="videoSection" class="hidden">
     <p>💙 Here’s Your Surprise 💙</p>
 
@@ -94,6 +104,11 @@
     <video id="myVideo" controls playsinline>
       <source src="video.mp4" type="video/mp4">
     </video>
+
+    <!-- MAP BUTTON (HIDDEN INITIALLY) -->
+    <button id="mapBtn" class="hidden" onclick="openMap()">
+      Your Destination 📍
+    </button>
   </div>
 
   <script>
@@ -135,6 +150,15 @@
     function playVideo() {
       document.getElementById("myVideo").play();
     }
+
+    function openMap() {
+      window.open("https://maps.app.goo.gl/2j4PzAgsWQzouuLU8", "_blank");
+    }
+
+    // SHOW BUTTON AFTER VIDEO ENDS
+    document.getElementById("myVideo").addEventListener("ended", function() {
+      document.getElementById("mapBtn").classList.remove("hidden");
+    });
   </script>
 
 </body>
